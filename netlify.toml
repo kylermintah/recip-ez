@@ -1,0 +1,15 @@
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
+  [plugins.inputs]
+  nextConfig = """
+    module.exports = {
+      experimental: {
+        optimizeCss: true
+      },
+      messages: {
+        webpack5: false,
+        noCache: false
+      }
+    }
+  """
