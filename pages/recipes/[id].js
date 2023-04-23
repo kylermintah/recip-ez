@@ -25,12 +25,17 @@ export default function Recipe() {
   };
 
   useEffect(() => {
-    if (router.isReady) {
-      fetchRecipe(router.query.id).then((fetchedRecipe) => {
+    if (router.isReady && router.query.id) {
+      const source = axios.CancelToken.source();
+      fetchRecipe(router.query.id, source.token).then((fetchedRecipe) => {
         if (fetchedRecipe) {
           setRecipe(fetchedRecipe[0]);
         }
       });
+
+      return () => {
+        source.cancel("Request canceled due to component unmounting");
+      };
     }
   }, [router.isReady, router.query.id]);
 
@@ -194,7 +199,7 @@ export default function Recipe() {
   );
 }
 
-async function fetchRecipe(id) {
+async function fetchRecipe(id, cancelToken) {
   const url = "/api/proxy";
   const headers = {
     "Content-Type": "application/json",
@@ -203,16 +208,14 @@ async function fetchRecipe(id) {
     id,
   };
   try {
-    const response = await axios.post(url, data, { headers });
+    const response = await axios.post(url, data, { headers, cancelToken });
     return response.data;
   } catch (error) {
-    console.error("Error fetching recipes:", error);
+    if (axios.isCancel(error)) {
+      console.log("Request canceled:", error.message);
+    } else {
+      console.error("Error fetching recipes:", error);
+    }
     return [];
   }
-}
-
-export async function getServerSideProps(context) {
-  return {
-    props: {}, // will be passed to the page component as props
-  };
 }
