@@ -20,13 +20,6 @@ export default function Recipe() {
   const { routerData } = useRouterData();
   const { rawInput } = routerData;
   const [recipeData, setRecipe] = useState(null);
-
-  console.log("Recipe component rendered");
-  console.log("HERE IS THE RECIPE", recipeData);
-  console.log("HERE IS THE RAW INPut", rawInput);
-
-  console.log("HERE IS THE ID", router.query.id);
-
   const goBack = () => {
     router.back();
   };

@@ -13,3 +13,5 @@ package = "@netlify/plugin-nextjs"
       }
     }
   """
+[build.environment]
+NPM_CONFIG_PRODUCTION = false
