@@ -22,7 +22,7 @@ const CycleText = () => {
          transition={{ duration: 1, ease: "easeOut" }}
         className="text-xl text-center"
       >
-        What's in your{" "}
+        What&apos;s in your{" "}
         <span className="font-bold opacity-60">{buzzwords[buzzwordIndex]}</span>
         ?
       </motion.p>
