@@ -15,3 +15,5 @@ export function RouterDataProvider({ children }) {
     </RouterDataContext.Provider>
   );
 }
+
+export default RouterDataContext;
