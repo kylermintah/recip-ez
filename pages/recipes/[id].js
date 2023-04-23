@@ -6,7 +6,7 @@ import {
   FaPaperclip as PaperClipIcon,
   FaInfoCircle as InfoCircleIcon,
 } from "react-icons/fa";
-import { useRouterData } from "../context/RouterDataContext";
+import { useRouterData } from "../api/context/RouterDataContext";
 
 import {
   renderNumberedList,
@@ -209,4 +209,10 @@ async function fetchRecipe(id) {
     console.error("Error fetching recipes:", error);
     return [];
   }
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
 }

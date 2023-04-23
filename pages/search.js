@@ -4,7 +4,7 @@ import Image from "next/image";
 import ClipLoader from "react-spinners/ClipLoader";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { useRouterData } from "./context/RouterDataContext";
+import { useRouterData } from "./api/context/RouterDataContext";
 
 import CycleText from "./components/cycletext";
 import { toTitleCase } from "@/utils/stringUtils";
