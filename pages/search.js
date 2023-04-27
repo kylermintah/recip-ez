@@ -151,7 +151,7 @@ const ResultModal = ({ input, results, handleClose }) => {
             />
           </svg>
         </button>
-        <h2 className="font-bold text-2xl mb-5">Cook something up:</h2>
+        <h2 className="font-bold text-2xl mb-5 text-black">Cook something up:</h2>
         <ul className="divide-y divide-gray-300">
           {results.map((result, index) => (
             <motion.li
@@ -161,7 +161,7 @@ const ResultModal = ({ input, results, handleClose }) => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.2 }}
             >
-              <span>{toTitleCase(result.name)}</span>
+              <span className="text-black">{toTitleCase(result.name)}</span>
               <button
                 className="text-blue-700 hover:text-blue-800 font-medium"
                 onClick={() => {
